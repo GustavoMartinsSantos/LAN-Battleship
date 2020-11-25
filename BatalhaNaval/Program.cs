@@ -54,10 +54,7 @@ namespace BatalhaNaval {
             TcpListener server = new TcpListener(IPAddress.Any, port_num);
             server.Start();
 
-            Console.Write("Digite seu nome: ");
-            string nome_user = Console.ReadLine();
-
-            InserirNavio(1);
+            InserirNavio(4);
 
             Console.WriteLine("Esperando uma conexão na porta " + port_num + "...");
             TcpClient client = server.AcceptTcpClient();
@@ -66,55 +63,19 @@ namespace BatalhaNaval {
 
             EnviandoCampo(stream, mapa);
 
-            char[,] campo_copia = new char[10, 10];
-            LendoCampo(stream, campo_copia);
+            char[,] campo_adversario = new char[10, 10];
+            Console.WriteLine("Aguarde até o jogador adversário criar o seu campo...");
+            int qtd_acertos = LendoCampo(stream, campo_adversario);
 
             int acertos = 0;
-            int qtd_acertos = 2;
-            while (acertos < qtd_acertos) {
+            while (true) {
                 // enviando resposta
-                acertos = VerificarCampo(stream, mapa, campo_copia, jogadas, acertos, qtd_acertos, nome_user);
-                
-                // receber resposta de suposto vencedor
-                byte[] buffer = new byte[100];
-                string resposta;
-                stream.Read(buffer, 0, buffer.Length);
-                int tamanho_resposta = 0;
-
-                foreach(byte b in buffer) {
-                    if (b != '\0')
-                        tamanho_resposta++;
-                    else
-                        break;
-                }
-
-                resposta = Encoding.ASCII.GetString(buffer, 0, tamanho_resposta);
-                Console.WriteLine(resposta);
-
-                if(resposta != "Sua vez...")
+                acertos = VerificarCampo(stream, mapa, campo_adversario, jogadas, acertos, qtd_acertos);
+                if (acertos == qtd_acertos)
                     break;
-            }
-        }
 
-        static void ClientSide(string ip_host, int port_num) {
-            TcpClient client = new TcpClient(ip_host, port_num);
-            NetworkStream stream = client.GetStream();
-
-            Console.Write("Digite seu nome: ");
-            string nome_user = Console.ReadLine();
-
-            InserirNavio(1);
-
-            char[,] campo_copia = new char[10, 10];
-            LendoCampo(stream, campo_copia);
-            Console.Clear();
-
-            EnviandoCampo(stream, mapa);
-
-            int acertos = 0;
-            int qtd_acertos = 2;
-            while (acertos < qtd_acertos) {
                 // receber resposta de suposto vencedor
+                Console.WriteLine("Espere a jogada do jogador adversário...");
                 byte[] buffer = new byte[100];
                 string resposta;
                 stream.Read(buffer, 0, buffer.Length);
@@ -128,19 +89,73 @@ namespace BatalhaNaval {
                 }
 
                 resposta = Encoding.ASCII.GetString(buffer, 0, tamanho_resposta);
-                Console.WriteLine(resposta);
-
-                if (resposta != "Sua vez...")
+                if (resposta == "O jogador adversário ganhou a partida.") {
+                    Console.WriteLine(resposta);
                     break;
 
-                // enviando resposta
-                acertos = VerificarCampo(stream, mapa, campo_copia, jogadas, acertos, qtd_acertos, nome_user);
+                } else {
+                    for (int y = 0; y < 10; y++) {
+                        for (int x = 0; x < 10; x++) {
+                            if (mapa[y, x] != 'X')
+                                mapa[y, x] = resposta[(y * 10) + x];
+                        }
+                    }
+                }
             }
         }
 
-        static int VerificarCampo(NetworkStream stream, char [,] mapa_jogador, char[,] campo_adversario, char[,] jogadas, int acertos, int qtd, string nome_vencedor) {
-            string mensagem = "Sua vez...";
-            Console.WriteLine(mensagem);
+        static void ClientSide(string ip_host, int port_num) {
+            TcpClient client = new TcpClient(ip_host, port_num);
+            NetworkStream stream = client.GetStream();
+
+            InserirNavio(4);
+
+            char[,] campo_adversario = new char[10, 10];
+            Console.WriteLine("Aguarde até o jogador adversário criar o seu campo...");
+            int qtd_acertos = LendoCampo(stream, campo_adversario);
+
+            Console.Clear();
+
+            EnviandoCampo(stream, mapa);
+
+            int acertos = 0;
+            while (acertos < qtd_acertos) {
+                // receber resposta de suposto vencedor
+                Console.WriteLine("Espere a jogada do jogador adversário...");
+                byte[] buffer = new byte[100];
+                string resposta;
+                stream.Read(buffer, 0, buffer.Length);
+                int tamanho_resposta = 0;
+
+                foreach(byte b in buffer) {
+                    if (b != '\0')
+                        tamanho_resposta++;
+                    else
+                        break;
+                }
+
+                resposta = Encoding.ASCII.GetString(buffer, 0, tamanho_resposta);
+                if (resposta.Equals("O jogador oponente ganhou a partida.")) { 
+                    Console.WriteLine(resposta);
+                    break;
+                } else {
+                    for(int y = 0; y < 10; y++) {
+                        for(int x = 0; x < 10; x++) {
+                            if(mapa[y,x] != 'X')
+                                mapa[y, x] = resposta[(y * 10) + x];
+                        }
+                    }
+                }
+
+                // enviando resposta
+                acertos = VerificarCampo(stream, mapa, campo_adversario, jogadas, acertos, qtd_acertos);
+            }
+        }
+
+        static int VerificarCampo(NetworkStream stream, char [,] mapa_jogador, char[,] campo_adversario, 
+                                  char[,] jogadas, int acertos, int qtd) {
+            int vertical;
+            int horizontal;
 
             acertando:
                 Console.Clear();
@@ -159,13 +174,16 @@ namespace BatalhaNaval {
                     Console.WriteLine();
                 }
 
-                Console.Write("Digite a posição vertical da bomba: ");
-                int vertical = int.Parse(Console.ReadLine());
+                do {
+                    Console.Write("Digite a posição vertical da bomba: ");
+                    vertical = int.Parse(Console.ReadLine());
 
-                Console.Write("Digite a posição horizontal da bomba: ");
-                int horizontal = int.Parse(Console.ReadLine());
+                    Console.Write("Digite a posição horizontal da bomba: ");
+                    horizontal = int.Parse(Console.ReadLine());
+                } while (horizontal < 0 || horizontal > 9 || vertical < 0 || vertical > 9);
+                 
 
-                if(jogadas[vertical, horizontal] == 'X')
+                if(jogadas[vertical, horizontal] == 'X' || jogadas[vertical, horizontal] == '*')
                     goto acertando;
                 else if (campo_adversario[vertical, horizontal] == 'X') {
                     jogadas[vertical, horizontal] = 'X';
@@ -176,14 +194,18 @@ namespace BatalhaNaval {
                         Console.Clear();
                         Console.WriteLine("Parabéns você venceu o jogo.");
 
-                        mensagem = "O jogador " + nome_vencedor + " ganhou.";
+                        string mensagem = "O jogador oponente ganhou a partida.";
+
+                        byte[] send = new byte[100];
+                        send = Encoding.ASCII.GetBytes(mensagem);
+                        stream.Write(send, 0, mensagem.Length);
                     }
+                } else { 
+                    jogadas[vertical, horizontal] = '*';
+
+                    EnviandoCampo(stream, jogadas);
                 }
-
-                byte[] send = new byte[100];
-                send = Encoding.ASCII.GetBytes(mensagem);
-                stream.Write(send, 0, mensagem.Length);
-
+            
             return acertos;
         }
         
@@ -237,10 +259,10 @@ namespace BatalhaNaval {
                     escolha:
                         int escolha = int.Parse(Console.ReadLine());
 
-                        // verificação de se o navio escolhido já foi escolhido
+                        // caso o navio já foi escolhido
                         for (int x = 0; x < 10; x++) {
                             if (escolha == escolha_usuario[x]) {
-                                Console.WriteLine("Navio já escolhido. Digite outro número: ");
+                                Console.Write("Navio já escolhido. Digite outro número: ");
                                 goto escolha;
                             } 
                             
@@ -261,32 +283,32 @@ namespace BatalhaNaval {
 
                     int cont = 0;
 
-                if (vertical < 0 || vertical > 9 || horizontal < 0 || horizontal > 9)
-                    goto continuar;
-                else if (posicao.ToUpper() == "H" || posicao.ToUpper() == "HORIZONTAL") {
-                    for (int x = 1; x <= navios[escolha - 1].Length; x++) {
-                        if (mapa[vertical, horizontal + cont] != 'X')
-                            mapa[vertical, horizontal + cont] = 'X';
-                        else {
-                            Console.Clear();
-                            goto continuar;
-                        }
+                    if (vertical < 0 || vertical > 9 || horizontal < 0 || horizontal > 9)
+                        goto continuar;
+                    else if (posicao.ToUpper() == "H" || posicao.ToUpper() == "HORIZONTAL") {
+                        for (int x = 1; x <= navios[escolha - 1].Length; x++) {
+                            if (mapa[vertical, horizontal + cont] != 'X')
+                                mapa[vertical, horizontal + cont] = 'X';
+                            else {
+                                Console.Clear();
+                                goto continuar;
+                            }
 
-                        cont++;
-                    }
-                } else if (posicao.ToUpper() == "V" || posicao.ToUpper() == "VERTICAL") {
-                    for (int x = 1; x <= navios[escolha - 1].Length; x++) {
-                        if (mapa[vertical + cont, horizontal] != 'X')
-                            mapa[vertical + cont, horizontal] = 'X';
-                        else {
-                            Console.Clear();
-                            goto continuar;
+                            cont++;
                         }
+                    } else if (posicao.ToUpper() == "V" || posicao.ToUpper() == "VERTICAL") {
+                        for (int x = 1; x <= navios[escolha - 1].Length; x++) {
+                            if (mapa[vertical + cont, horizontal] != 'X')
+                                mapa[vertical + cont, horizontal] = 'X';
+                            else {
+                                Console.Clear();
+                                goto continuar;
+                            }
 
-                        cont++;
-                    }
-                } else
-                    goto continuar;
+                            cont++;
+                        }
+                    } else
+                        goto continuar;
 
                     Console.Clear();
                 }
@@ -296,40 +318,38 @@ namespace BatalhaNaval {
             string message = "";
             for (int y = 0; y < 10; y++) {
                 for (int x = 0; x < 10; x++) {
-                    if (campo[y, x] != 'X')
-                        message += '~';
-                    else
-                        message += campo[y, x];
+                    message += campo[y, x];
                 }
-
-                message += '.';
             }
 
             // enviando o campo
-            byte[] send = new byte[110];
+            byte[] send = new byte[100];
             send = Encoding.ASCII.GetBytes(message);
             stream.Write(send, 0, send.Length);
         }
 
-        static void LendoCampo(NetworkStream stream, char[,] campo_copia) {
-            byte[] buffer = new byte[110];
-            Console.WriteLine("Aguarde até o jogador adversário criar o seu campo...");
+        static int LendoCampo(NetworkStream stream, char[,] campo_copia) {
+            byte[] buffer = new byte[100];
             stream.Read(buffer, 0, buffer.Length);
+            int acertos = 0;
 
             int linha = 0;
             int coluna = 0;
-            for (int x = 0; x < 110; x++) {
-                if (buffer[x] != 46) {
-                    campo_copia[linha, coluna] += Convert.ToChar(buffer[x]);
+            for (int x = 0; x < 100; x++) {
+                if (Convert.ToChar(buffer[x]) == 'X')
+                    acertos++;
 
-                    if (coluna != 9)
-                        coluna++;
-                    else {
-                        coluna = 0;
-                        linha++;
-                    }
+                campo_copia[linha, coluna] += Convert.ToChar(buffer[x]);
+
+                if (coluna != 9)
+                    coluna++;
+                else {
+                    coluna = 0;
+                    linha++;
                 }
             }
+
+            return acertos;
         }
     }
 }
