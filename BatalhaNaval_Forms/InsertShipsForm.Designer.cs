@@ -36,7 +36,8 @@ namespace BatalhaNaval_Forms {
             this.radioBtnHost = new System.Windows.Forms.RadioButton();
             this.radioBtnClient = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.groupBox_Ships = new System.Windows.Forms.GroupBox();
+            this.gB_Ships = new System.Windows.Forms.GroupBox();
+            this.btn_Rotate = new System.Windows.Forms.Button();
             this.groupBox_Conection.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,7 +74,7 @@ namespace BatalhaNaval_Forms {
             this.groupBox_Conection.Controls.Add(this.label4);
             this.groupBox_Conection.Location = new System.Drawing.Point(12, 146);
             this.groupBox_Conection.Name = "groupBox_Conection";
-            this.groupBox_Conection.Size = new System.Drawing.Size(356, 229);
+            this.groupBox_Conection.Size = new System.Drawing.Size(310, 201);
             this.groupBox_Conection.TabIndex = 0;
             this.groupBox_Conection.TabStop = false;
             // 
@@ -156,15 +157,25 @@ namespace BatalhaNaval_Forms {
             this.label4.TabIndex = 4;
             this.label4.Text = "Porta de conexão";
             // 
-            // groupBox_Ships
+            // gB_Ships
             // 
-            this.groupBox_Ships.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox_Ships.BackgroundImage = global::BatalhaNaval_Forms.Properties.Resources.Fundo;
-            this.groupBox_Ships.Location = new System.Drawing.Point(475, 30);
-            this.groupBox_Ships.Name = "groupBox_Ships";
-            this.groupBox_Ships.Size = new System.Drawing.Size(592, 558);
-            this.groupBox_Ships.TabIndex = 1;
-            this.groupBox_Ships.TabStop = false;
+            this.gB_Ships.BackColor = System.Drawing.Color.Transparent;
+            this.gB_Ships.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gB_Ships.BackgroundImage")));
+            this.gB_Ships.Location = new System.Drawing.Point(475, 30);
+            this.gB_Ships.Name = "gB_Ships";
+            this.gB_Ships.Size = new System.Drawing.Size(592, 558);
+            this.gB_Ships.TabIndex = 1;
+            this.gB_Ships.TabStop = false;
+            // 
+            // btn_Rotate
+            // 
+            this.btn_Rotate.Location = new System.Drawing.Point(394, 242);
+            this.btn_Rotate.Name = "btn_Rotate";
+            this.btn_Rotate.Size = new System.Drawing.Size(75, 55);
+            this.btn_Rotate.TabIndex = 2;
+            this.btn_Rotate.Text = "Rotacionar";
+            this.btn_Rotate.UseVisualStyleBackColor = true;
+            this.btn_Rotate.Click += new System.EventHandler(this.btn_Rotate_Click);
             // 
             // Insert_Ships
             // 
@@ -172,7 +183,8 @@ namespace BatalhaNaval_Forms {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1089, 624);
-            this.Controls.Add(this.groupBox_Ships);
+            this.Controls.Add(this.btn_Rotate);
+            this.Controls.Add(this.gB_Ships);
             this.Controls.Add(this.groupBox_Conection);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -198,7 +210,8 @@ namespace BatalhaNaval_Forms {
         private System.Windows.Forms.RadioButton radioBtnHost;
         private System.Windows.Forms.RadioButton radioBtnClient;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox_Ships;
+        private System.Windows.Forms.GroupBox gB_Ships;
+        private System.Windows.Forms.Button btn_Rotate;
     }
 }
 

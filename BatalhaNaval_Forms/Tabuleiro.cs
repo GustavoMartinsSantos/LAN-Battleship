@@ -15,6 +15,7 @@ namespace BatalhaNaval_Forms {
         private int startPositionX = 38;
         private int addHeight = 51;
         private int addWidth = 51;
+        private int qtdAcertos = 0;
 
         public MineField[,] getMineFields () {
             return mineFields;
@@ -26,6 +27,14 @@ namespace BatalhaNaval_Forms {
 
         public int getNumberColumns () {
             return columns;
+        }
+
+        public int getQtdAcertos () {
+            return qtdAcertos;
+        }
+
+        public void addAcerto () {
+            qtdAcertos++;
         }
 
         public int[] getMineFieldPosition (int fieldNumber) {
@@ -45,7 +54,27 @@ namespace BatalhaNaval_Forms {
             return Positions;
         }
 
-        
+        public void setShips(Insert_Ships form) {
+            mineFields = new MineField[rows, columns];
+            int startVerticalPosition = startPositionY;
+            int startHorizontalPosition = startPositionX;
+            int number = 1;
+
+            for (int y = 0; y < rows; y++) {
+                for (int x = 0; x < columns; x++) {
+                    mineFields[y, x] = new MineField();
+
+                    mineFields[y, x].setPlayerField(form, number,
+                    startVerticalPosition, startHorizontalPosition);
+
+                    startHorizontalPosition += addWidth;
+                    number++;
+                }
+
+                startHorizontalPosition = startPositionX;
+                startVerticalPosition += addHeight;
+            }
+        }
 
         public void setMineFields(PartidaForm form, bool opponentBoard) {
             mineFields = new MineField[rows, columns];

@@ -14,6 +14,7 @@ namespace BatalhaNaval_Forms {
         private bool Vertical = false;
         private bool Ship = false;
         private bool Jogada = false;
+        private string shipPart;
 
         public Button btn;
 
@@ -25,18 +26,54 @@ namespace BatalhaNaval_Forms {
             return Ship;
         }
 
-        public void setShip() {
-            Ship = true;
+        public void setShip(bool ship, string shipName, bool vertical) {
+            Ship = ship;
+
+            if (ship) {
+                Vertical = vertical;
+
+                shipPart = shipName;
+            }
+
+            setImage();
+        }
+
+        public int getShipName () {
+            return int.Parse(shipPart.Substring(0, shipPart.IndexOf("_")));
         }
 
         public bool getJogada () {
             return Jogada;
         }
 
-        public void setJogada() {
+        public void setJogada(Tabuleiro tabuleiro) {
             Jogada = true;
 
+            if (Ship)
+                tabuleiro.addAcerto();
+
             setImage();
+        }
+
+        public void setPlayerField (Insert_Ships form, int number, int startVerticalPosition, int startHorizontalPosition) {
+            btn = new Button();
+
+            btn.Height = heightField;
+            btn.Width = widthFields;
+            btn.Name = "btn_" + number.ToString();
+            btn.Location = new Point(startHorizontalPosition, startVerticalPosition);
+
+            setImage();
+
+            btn.AllowDrop  = true;
+            btn.DragEnter += new DragEventHandler(form.dragEnter);
+            btn.MouseDown += new MouseEventHandler(form.btn_MouseDown);
+            btn.DragDrop  += new DragEventHandler(form.dragDropMinefield);
+            btn.DragOver  += new DragEventHandler(form.dragOverMineField);
+            btn.DragLeave += new EventHandler(form.dragLeaveMineField);
+            
+
+            form.getGroupBox_MyShips().Controls.Add(btn);
         }
 
         public void createButton(string board, int number, PartidaForm form, bool opponentBoard, int startVerticalPosition, int startHorizontalPosition) {
@@ -63,11 +100,18 @@ namespace BatalhaNaval_Forms {
                 btn.Image = Image.FromFile("../../IMG/Explosao.png");
             else if (Jogada)
                 btn.Image = Image.FromFile("../../IMG/Splash.png");
-            else {
+            else if (Ship) {
+                btn.Image = Image.FromFile("../../IMG/Ship" + shipPart + ".png");
+
+                if(Vertical) {
+                    btn.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                }
+            } else {
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 255, 255, 255);
                 btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 255, 255, 255);
                 btn.BackColor = Color.FromArgb(0, 255, 255, 255);
+                btn.Image = null;
             }
         }
 

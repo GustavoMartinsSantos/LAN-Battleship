@@ -16,6 +16,14 @@ namespace BatalhaNaval_Forms {
         private IPAddress ip;
         private int port;
 
+        public IPAddress getIP () {
+            return ip;
+        }
+
+        public int getPort () {
+            return port;
+        }
+
         // sending to current IP address: current port number
         public void sendMessage(string IP_Port, string message) {
             if (!string.IsNullOrEmpty(message)) {

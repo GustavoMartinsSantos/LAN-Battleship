@@ -24,6 +24,7 @@ namespace BatalhaNaval_Forms {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PartidaForm));
             this.lbl_Result = new System.Windows.Forms.Label();
             this.gB_OponnentShips = new System.Windows.Forms.GroupBox();
             this.gB_YourShips = new System.Windows.Forms.GroupBox();
@@ -42,7 +43,7 @@ namespace BatalhaNaval_Forms {
             // gB_OponnentShips
             // 
             this.gB_OponnentShips.BackColor = System.Drawing.Color.Transparent;
-            this.gB_OponnentShips.BackgroundImage = global::BatalhaNaval_Forms.Properties.Resources.Fundo;
+            this.gB_OponnentShips.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gB_OponnentShips.BackgroundImage")));
             this.gB_OponnentShips.Location = new System.Drawing.Point(12, 89);
             this.gB_OponnentShips.Name = "gB_OponnentShips";
             this.gB_OponnentShips.Size = new System.Drawing.Size(592, 558);
@@ -52,7 +53,7 @@ namespace BatalhaNaval_Forms {
             // gB_YourShips
             // 
             this.gB_YourShips.BackColor = System.Drawing.Color.Transparent;
-            this.gB_YourShips.BackgroundImage = global::BatalhaNaval_Forms.Properties.Resources.Fundo;
+            this.gB_YourShips.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gB_YourShips.BackgroundImage")));
             this.gB_YourShips.Location = new System.Drawing.Point(624, 89);
             this.gB_YourShips.Name = "gB_YourShips";
             this.gB_YourShips.Size = new System.Drawing.Size(592, 558);
