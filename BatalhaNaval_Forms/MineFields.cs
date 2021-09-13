@@ -39,7 +39,10 @@ namespace BatalhaNaval_Forms {
         }
 
         public int getShipName () {
-            return int.Parse(shipPart.Substring(0, shipPart.IndexOf("_")));
+            if (shipPart == null)
+                return 0;
+            else
+                return int.Parse(shipPart.Substring(0, shipPart.IndexOf("_")));
         }
 
         public bool getJogada () {

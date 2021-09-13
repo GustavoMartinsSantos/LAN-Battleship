@@ -99,9 +99,10 @@ namespace BatalhaNaval_Forms {
                     protocol.sendMessage(clientIP, message);
 
                     // Se o tiro acertou a água, passa a vez para o adversário
-                    if (!mine.getShip())
+                    if (!mine.getShip()) {
                         yourTurn = false;
-                    lbl_Turn.Text = "Espere a jogada do jogador adversário...";
+                        lbl_Turn.Text = "Espere a jogada do jogador adversário...";
+                    }
                 }
             }
         }
