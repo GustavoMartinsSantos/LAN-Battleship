@@ -33,11 +33,12 @@ namespace BatalhaNaval_Forms {
             InitializeComponent();
         }
 
-         public PartidaForm (TCPIP protocol, string ClientIP){//, Tabuleiro myBoard) {
+        public PartidaForm (TCPIP protocol, string ClientIP, Tabuleiro myBoard) {
             InitializeComponent();
 
             clientIP = ClientIP;
             this.protocol = protocol;
+            this.myBoard = new Tabuleiro(10, 10);
 
             if (clientIP != null) { // first player is server side
                 yourTurn = true;
@@ -47,8 +48,7 @@ namespace BatalhaNaval_Forms {
             try {
                 protocol.setEventsForm2(this);
 
-                this.myBoard = myBoard;
-                myBoard.setMineFields(this, false);
+                this.myBoard.setMineFields(this, false);
 
                 opponentBoard = new Tabuleiro(10, 10);
                 opponentBoard.setMineFields(this, true);
@@ -56,8 +56,13 @@ namespace BatalhaNaval_Forms {
                 string message = ""; // loop para envio dos navios escolhidos
                 for (int y = 0; y < myBoard.getNumberRows(); y++) {
                     for (int x = 0; x < myBoard.getNumberColumns(); x++) {
-                        if (myBoard.getMineFields()[y, x].getShip()) {
+                        MineField mine = myBoard.getMineFields()[y, x];
+
+                        if (mine.getShip()) {
                             message += "1";
+
+                            this.myBoard.getMineFields()[y, x].setShip(true, mine.getShipPart(), mine.isVertical());
+
                             qtdAcertos++;
                         } else
                             message += "0";
@@ -149,8 +154,8 @@ namespace BatalhaNaval_Forms {
                     for (int x = 0; x < columns; x++) {
                         int index = (y * rows) + x;
 
-                        /*if (message[index] == '1')
-                            opponentBoard.getMineFields()[y, x].setShip();*/
+                        if (message[index] == '1')
+                            opponentBoard.getMineFields()[y, x].setShip(true, null, false);
                     }
                 }
 

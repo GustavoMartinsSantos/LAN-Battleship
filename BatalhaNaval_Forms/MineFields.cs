@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BatalhaNaval_Forms {
-    class MineField {
+    public class MineField {
         private static int heightField = 45;
         private static int widthFields = 45;
 
         private bool Vertical = false;
         private bool Ship = false;
         private bool Jogada = false;
+        private bool Invalid = false;
         private string shipPart;
 
         public Button btn;
@@ -35,7 +36,12 @@ namespace BatalhaNaval_Forms {
                 shipPart = shipName;
             }
 
-            setImage();
+            if(shipName != null)
+                setImage();
+        }
+
+        public string getShipPart () {
+            return shipPart;
         }
 
         public int getShipName () {
@@ -58,6 +64,16 @@ namespace BatalhaNaval_Forms {
             setImage();
         }
 
+        public bool getInvalidPosition () {
+            return Invalid;
+        }
+
+        public void setInvalidPosition (bool position) {
+            Invalid = position;
+
+            setImage();
+        }
+
         public void setPlayerField (Insert_Ships form, int number, int startVerticalPosition, int startHorizontalPosition) {
             btn = new Button();
 
@@ -74,7 +90,6 @@ namespace BatalhaNaval_Forms {
             btn.DragDrop  += new DragEventHandler(form.dragDropMinefield);
             btn.DragOver  += new DragEventHandler(form.dragOverMineField);
             btn.DragLeave += new EventHandler(form.dragLeaveMineField);
-            
 
             form.getGroupBox_MyShips().Controls.Add(btn);
         }
@@ -99,14 +114,16 @@ namespace BatalhaNaval_Forms {
         }
 
         public void setImage () {
-            if (Ship && Jogada)
+            if (Invalid)
+                btn.BackColor = Color.Gray;
+            else if (Ship && Jogada)
                 btn.Image = Image.FromFile("../../IMG/Explosao.png");
             else if (Jogada)
                 btn.Image = Image.FromFile("../../IMG/Splash.png");
             else if (Ship) {
                 btn.Image = Image.FromFile("../../IMG/Ship" + shipPart + ".png");
 
-                if(Vertical) {
+                if (Vertical) {
                     btn.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 }
             } else {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BatalhaNaval_Forms {
-    class Tabuleiro {
+    public class Tabuleiro {
         private int rows = 10;
         private int columns = 10;
         private MineField[,] mineFields;
@@ -54,7 +54,7 @@ namespace BatalhaNaval_Forms {
             return Positions;
         }
 
-        public void setShips(Insert_Ships form) {
+        public void setMineFields(Insert_Ships form) {
             mineFields = new MineField[rows, columns];
             int startVerticalPosition = startPositionY;
             int startHorizontalPosition = startPositionX;
