@@ -23,7 +23,7 @@ namespace BatalhaNaval_Forms {
             return Vertical;
         }
 
-        public bool getShip() {
+        public bool IsShip() {
             return Ship;
         }
 
@@ -40,8 +40,15 @@ namespace BatalhaNaval_Forms {
                 setImage();
         }
 
-        public string getShipPart () {
+        public string getShip() {
             return shipPart;
+        }
+
+        public int getShipPart () {
+            if (shipPart == null)
+                return 0;
+            else
+                return int.Parse(shipPart.Substring(shipPart.IndexOf("_") + 1));
         }
 
         public int getShipName () {

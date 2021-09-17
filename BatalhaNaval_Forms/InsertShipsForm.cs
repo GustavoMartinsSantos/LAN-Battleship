@@ -125,7 +125,6 @@ namespace BatalhaNaval_Forms {
                 }*/
 
                 for (int cont = 0; cont < positions.GetLength(0); cont++) {
-                    // resolver o problema de alocação de uma posição do navio diferente da ponta
                     string shipName = ship.ToString() + "_" + (cont + 1).ToString();
 
                     int y = positions[cont, 0];
@@ -175,7 +174,7 @@ namespace BatalhaNaval_Forms {
             tabuleiro.setMineFields(this);
 
             vertical = true;
-            setShips(1, 5, 9, true);
+            setShips(1, 4, 2, true);
             //tabuleiro.getMineFields()[5, 5].setInvalidPosition(true);
         }
 
@@ -268,7 +267,7 @@ namespace BatalhaNaval_Forms {
             int[] Positions = tabuleiro.getMineFieldPosition(number);
             MineField mine = tabuleiro.getMineFields()[Positions[0], Positions[1]];
 
-            if (mine.getShip()) {
+            if (mine.IsShip()) {
                 string data = mine.getShipName().ToString() + ";";
                       data += Positions[0].ToString() + ";" + Positions[1].ToString();
 
@@ -285,6 +284,17 @@ namespace BatalhaNaval_Forms {
             int number = int.Parse(btn.Name.Substring(btn.Name.IndexOf("_") + 1));
             int[] dropPositions = tabuleiro.getMineFieldPosition(number);
 
+            MineField dragMine = tabuleiro.getMineFields()[dragPositions[0], dragPositions[1]];
+            for (int x = dragMine.getShipPart(); x > 1; x--) {
+                if (vertical) {
+                    if (dropPositions[0] > 0)
+                        dropPositions[0] -= 1;
+                } else {
+                    if (dropPositions[1] > 0)
+                        dropPositions[1] -= 1;
+                }
+            }
+
             setShips(int.Parse(values[0]), dragPositions[0], dragPositions[1], false);
             setShips(int.Parse(values[0]), dropPositions[0], dropPositions[1], true);
         }
@@ -296,6 +306,18 @@ namespace BatalhaNaval_Forms {
 
             string data = e.Data.GetData(DataFormats.Text).ToString();
             string[] values = data.Split(';');
+            int[] dragPositions = { int.Parse(values[1]), int.Parse(values[2]) };
+
+            MineField dragMine = tabuleiro.getMineFields()[dragPositions[0], dragPositions[1]];
+            for (int x = dragMine.getShipPart(); x > 1; x--) {
+                if (vertical) {
+                    if (dropPositions[0] > 0)
+                        dropPositions[0] -= 1;
+                } else {
+                    if (dropPositions[1] > 0)
+                        dropPositions[1] -= 1;
+                }
+            }
 
             int[,] positions = getShipFields(int.Parse(values[0]), ref dropPositions[0], ref dropPositions[1]);
             for(int cont = 0; cont < positions.GetLength(0); cont++) {

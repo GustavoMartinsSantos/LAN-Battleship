@@ -58,10 +58,10 @@ namespace BatalhaNaval_Forms {
                     for (int x = 0; x < myBoard.getNumberColumns(); x++) {
                         MineField mine = myBoard.getMineFields()[y, x];
 
-                        if (mine.getShip()) {
+                        if (mine.IsShip()) {
                             message += "1";
 
-                            this.myBoard.getMineFields()[y, x].setShip(true, mine.getShipPart(), mine.isVertical());
+                            this.myBoard.getMineFields()[y, x].setShip(true, mine.getShip(), mine.isVertical());
 
                             qtdAcertos++;
                         } else
@@ -104,7 +104,7 @@ namespace BatalhaNaval_Forms {
                     protocol.sendMessage(clientIP, message);
 
                     // Se o tiro acertou a água, passa a vez para o adversário
-                    if (!mine.getShip()) {
+                    if (!mine.IsShip()) {
                         yourTurn = false;
                         lbl_Turn.Text = "Espere a jogada do jogador adversário...";
                     }
