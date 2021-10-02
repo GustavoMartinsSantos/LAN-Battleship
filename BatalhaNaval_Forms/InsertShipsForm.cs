@@ -19,11 +19,13 @@ namespace BatalhaNaval_Forms {
         public bool isServer;
         private string clientIP;
         private bool vertical = false;
+        private bool allowDrop = true;
+
         public GroupBox getGroupBox_MyShips() {
             return gB_Ships;
         }
 
-        public IPAddress getIP () {
+        public IPAddress getIP() {
             IPAddress ip;
 
             if (mskTxt_HostIP.Visible) {
@@ -42,19 +44,23 @@ namespace BatalhaNaval_Forms {
             return ip;
         }
 
-        public int getPort () {
+        public int getPort() {
             return int.Parse(txt_Port.Text);
         }
 
-        public void setPort (int porta) {
+        public void setPort(int porta) {
             txt_Port.Text = porta.ToString();
         }
 
-        private int[,] getShipFields (int ship, ref int Y, ref int X) {
+        private int[,] getShipFields(int ship, ref int Y, ref int X) {
+            bool allow = true;
             int fields = 3;
             switch (ship) {
                 case 1:
                     fields = 5;
+                    break;
+                case 2:
+                    fields = 4;
                     break;
             }
 
@@ -77,112 +83,138 @@ namespace BatalhaNaval_Forms {
 
             int[,] positions = new int[fields, 2];
 
-            for(cont = 0; cont < fields; cont++) {
-                positions[cont, 0] = Y;
-                positions[cont, 1] = X + cont;
-
+            for (cont = 0; cont < fields; cont++) {
                 if (vertical) {
                     positions[cont, 0] = Y + cont;
                     positions[cont, 1] = X;
+                } else {
+                    positions[cont, 0] = Y;
+                    positions[cont, 1] = X + cont;
+                }
+
+                if(allow) {
+                    int y = positions[cont, 0];
+                    int x = positions[cont, 1];
+                    MineField[,] mines = tabuleiro.getMineFields();
+
+                    int[,] verificationPositions = {
+                        { y - 1, x - 1 },
+                        { y - 1, x     },
+                        { y - 1, x + 1 },
+                        { y    , x - 1 },
+                        { y    , x     },
+                        { y    , x + 1 },
+                        { y + 1, x - 1 },
+                        { y + 1, x     },
+                        { y + 1, x + 1 }
+                    };
+
+                    for (int c = 0; c < verificationPositions.GetLength(0); c++) {
+                        y = verificationPositions[c, 0];
+                        x = verificationPositions[c, 1];
+
+                        if (y >= 0 && y < 10 && x >= 0 && x < 10) {
+                            if (mines[y, x].getShipName() != 0 && mines[y, x].getShipName() != ship) {
+                                allow = false;
+                                break;
+                            }
+                        }
+                    }
                 }
             }
 
+            if (allow)
+                allowDrop = true;
+            else
+                allowDrop = false;
             return positions;
         }
 
-        private void setShips(int ship, int Y, int X, bool move) {
+        private bool setShips(int ship, int Y, int X, bool move) {
+            int shipNumber = tabuleiro.getMineFields()[Y, X].getShipName();
+
             if (!move) { // desalocação dos navios
-                for (int c = 0; c < 10; c++) {
-                    if (tabuleiro.getMineFields()[c, X].getShipName() ==
-                        tabuleiro.getMineFields()[c, X].getShipName())
-                        tabuleiro.getMineFields()[c, X].setShip(false, "", vertical);
-
-                    if (tabuleiro.getMineFields()[Y, c].getShipName() ==
-                        tabuleiro.getMineFields()[Y, c].getShipName())
-                        tabuleiro.getMineFields()[Y, c].setShip(false, "", vertical);
+                for (int y = 0; y < 10; y++) {
+                    for (int x = 0; x < 10; x++) {
+                        if (tabuleiro.getMineFields()[y, x].getShipName() == shipNumber)
+                            tabuleiro.getMineFields()[y, x].setShip(false, null, vertical);
+                    }
                 }
+
+                return true;
             } else {
-                int[,] positions = getShipFields(ship, ref Y, ref X);
-                
-                /*if (vertical && (Y - 1) >= 0) {
-                    if((X - 1) >= 0) // first part of the vertical ship
-                        tabuleiro.getMineFields()[Y - 1, X - 1].setInvalidPosition(true);
+                if (allowDrop) {
+                    int[,] positions = getShipFields(ship, ref Y, ref X);
 
-                    tabuleiro.getMineFields()[Y - 1, X].setInvalidPosition(true);
+                    for (int cont = 0; cont < positions.GetLength(0); cont++) {
+                        string shipName = ship.ToString() + "_" + (cont + 1).ToString();
 
-                    if((X + 1) < 10)
-                        tabuleiro.getMineFields()[Y - 1, X + 1].setInvalidPosition(true);
-                }
+                        int y = positions[cont, 0];
+                        int x = positions[cont, 1];
+                        MineField mine = tabuleiro.getMineFields()[y, x];
 
-                if (!vertical && (X - 1) >= 0) {
-                    if((Y - 1) >= 0) // first part of the horizontal ship
-                        tabuleiro.getMineFields()[Y - 1, X - 1].setInvalidPosition(true);
+                        mine.setShip(true, shipName, vertical);
 
-                    tabuleiro.getMineFields()[Y, X - 1].setInvalidPosition(true);
+                        mine.btn.FlatAppearance.BorderSize = 1;
+                        mine.btn.FlatAppearance.BorderColor = Color.Black;
+                    }
 
-                    if((Y + 1) < 10)
-                        tabuleiro.getMineFields()[Y + 1, X - 1].setInvalidPosition(true);
-                }*/
-
-                for (int cont = 0; cont < positions.GetLength(0); cont++) {
-                    string shipName = ship.ToString() + "_" + (cont + 1).ToString();
-
-                    int y = positions[cont, 0];
-                    int x = positions[cont, 1];
-                    MineField mine = tabuleiro.getMineFields()[y, x];
-
-                    mine.setShip(true, shipName, vertical);
-
-                    mine.btn.FlatAppearance.BorderSize = 1;
-                    mine.btn.FlatAppearance.BorderColor = Color.Black;
-                    // resolver problema de posições inválidas adjacentes ao navio
-
-                    /*if (vertical) {
-                        if ((cont + 1) == positions.GetLength(0) && (y + 1) < 10) {// last part ship
-                            tabuleiro.getMineFields()[y + 1, X - 1].setInvalidPosition(true);
-                            tabuleiro.getMineFields()[y + 1, X].setInvalidPosition(true);
-                            tabuleiro.getMineFields()[y + 1, X + 1].setInvalidPosition(true);
-                        }
-
-                        if ((X - 1) >= 0)
-                            tabuleiro.getMineFields()[y, X - 1].setInvalidPosition(true); 
-                        if ((X + 1) < 10)
-                            tabuleiro.getMineFields()[y, X + 1].setInvalidPosition(true);
-                    } else {
-                        if ((cont + 1) == positions.GetLength(0) && (x + 1) < 10) {
-                            if((Y - 1) >= 0)
-                                tabuleiro.getMineFields()[Y - 1, x + 1].setInvalidPosition(true);
-
-                            tabuleiro.getMineFields()[Y, x + 1].setInvalidPosition(true);
-
-                            if((Y + 1) < 10)
-                                tabuleiro.getMineFields()[Y + 1, x + 1].setInvalidPosition(true);
-                        }
-
-                        if ((Y - 1) >= 0)
-                            tabuleiro.getMineFields()[Y - 1, x].setInvalidPosition(true);
-                        if ((Y + 1) < 10)
-                            tabuleiro.getMineFields()[Y + 1, x].setInvalidPosition(true);
-                    }*/
-                }
+                    return true;
+                } else
+                    return false;
             }
         }
-        
-        public void createShips () {
+
+        private int[] getStartShipPositions(int[] dragPositions, int[] dropPositions) {
+            MineField dragMine = tabuleiro.getMineFields()[dragPositions[0], dragPositions[1]];
+            for (int x = dragMine.getShipPart(); x > 1; x--) {
+                if (vertical) {
+                    if (dropPositions[0] > 0)
+                        dropPositions[0] -= 1;
+                } else {
+                    if (dropPositions[1] > 0)
+                        dropPositions[1] -= 1;
+                }
+            }
+
+            return dropPositions;
+        }
+
+        public void createShips() {
             tabuleiro = new Tabuleiro(10, 10);
 
             tabuleiro.setMineFields(this);
 
-            vertical = true;
-            setShips(1, 4, 2, true);
-            //tabuleiro.getMineFields()[5, 5].setInvalidPosition(true);
+            vertical = true; // randômico
+
+            /*for (int ship = 1; ship < 2; ship++) {
+                int number = Random();
+
+                int[] dropPositions = tabuleiro.getMineFieldPosition(number);
+                getShipFields(ship, ref dropPositions[0], ref dropPositions[1]);
+
+                if (allowDrop)
+                    setShips(ship, dropPositions, 2, true);
+                else
+                    ship -= 1; // reinicia
+                setShips(2, 8, 4, true);
+            }*/
+            int number = 9;
+            int ship = 1;
+
+            int[] dropPositions = tabuleiro.getMineFieldPosition(number);
+            getShipFields(ship, ref dropPositions[0], ref dropPositions[1]);
+
+            if(allowDrop)
+                setShips(ship, dropPositions[0], dropPositions[1], true);
+            setShips(2, 8, 4, true);
         }
 
         public Insert_Ships() {
             InitializeComponent();
 
             comboBoxConection.SelectedIndex = 0;
-            
+
             foreach (string IP in TCPIP.GetLocalIPAddress()) {
                 comboBox_LocalIPs.Items.Add(IP);
             }
@@ -192,7 +224,7 @@ namespace BatalhaNaval_Forms {
             createShips();
         }
 
-        public Insert_Ships (string IPConection, int porta, bool serverSide) {
+        public Insert_Ships(string IPConection, int porta, bool serverSide) {
             InitializeComponent();
 
             setPort(porta);
@@ -245,7 +277,7 @@ namespace BatalhaNaval_Forms {
             }
         }
 
-        private void ChangeForm () {
+        private void ChangeForm() {
             t1 = new Thread(openPartidaForm);
             t1.SetApartmentState(ApartmentState.STA);
             t1.Start();
@@ -253,7 +285,7 @@ namespace BatalhaNaval_Forms {
             this.Close();
         }
 
-        private void openPartidaForm () {
+        private void openPartidaForm() {
             Application.Run(new PartidaForm(protocol, clientIP, tabuleiro));
         }
 
@@ -267,9 +299,9 @@ namespace BatalhaNaval_Forms {
             int[] Positions = tabuleiro.getMineFieldPosition(number);
             MineField mine = tabuleiro.getMineFields()[Positions[0], Positions[1]];
 
-            if (mine.IsShip()) {
+            if (mine.isShip()) {
                 string data = mine.getShipName().ToString() + ";";
-                      data += Positions[0].ToString() + ";" + Positions[1].ToString();
+                data += Positions[0].ToString() + ";" + Positions[1].ToString();
 
                 this.DoDragDrop(data, DragDropEffects.Copy);
             }
@@ -284,53 +316,52 @@ namespace BatalhaNaval_Forms {
             int number = int.Parse(btn.Name.Substring(btn.Name.IndexOf("_") + 1));
             int[] dropPositions = tabuleiro.getMineFieldPosition(number);
 
-            MineField dragMine = tabuleiro.getMineFields()[dragPositions[0], dragPositions[1]];
-            for (int x = dragMine.getShipPart(); x > 1; x--) {
-                if (vertical) {
-                    if (dropPositions[0] > 0)
-                        dropPositions[0] -= 1;
-                } else {
-                    if (dropPositions[1] > 0)
-                        dropPositions[1] -= 1;
+            dropPositions = getStartShipPositions(dragPositions, dropPositions);
+            int[,] positions = getShipFields(int.Parse(values[0]), ref dropPositions[0], ref dropPositions[1]);
+
+            if (allowDrop) {
+                setShips(int.Parse(values[0]), dragPositions[0], dragPositions[1], false);
+                setShips(int.Parse(values[0]), dropPositions[0], dropPositions[1], true);
+            } else {
+                for (int cont = 0; cont < positions.GetLength(0); cont++) {
+                    MineField mine = tabuleiro.getMineFields()[positions[cont, 0], positions[cont, 1]];
+                    Button dropBtn = mine.btn;
+
+                    dropBtn.FlatAppearance.BorderSize = 3;
+                    dropBtn.FlatAppearance.BorderColor = Color.Red;
                 }
             }
-
-            setShips(int.Parse(values[0]), dragPositions[0], dragPositions[1], false);
-            setShips(int.Parse(values[0]), dropPositions[0], dropPositions[1], true);
         }
 
-        public void dragOverMineField (object sender, DragEventArgs e) {
-            Button btn = (Button)sender;
-            int number = int.Parse(btn.Name.Substring(btn.Name.IndexOf("_") + 1));
-            int[] dropPositions = tabuleiro.getMineFieldPosition(number);
-
+        public void dragOverMineField(object sender, DragEventArgs e) {
             string data = e.Data.GetData(DataFormats.Text).ToString();
             string[] values = data.Split(';');
             int[] dragPositions = { int.Parse(values[1]), int.Parse(values[2]) };
 
-            MineField dragMine = tabuleiro.getMineFields()[dragPositions[0], dragPositions[1]];
-            for (int x = dragMine.getShipPart(); x > 1; x--) {
-                if (vertical) {
-                    if (dropPositions[0] > 0)
-                        dropPositions[0] -= 1;
-                } else {
-                    if (dropPositions[1] > 0)
-                        dropPositions[1] -= 1;
-                }
-            }
+            Button btn = (Button)sender;
+            int number = int.Parse(btn.Name.Substring(btn.Name.IndexOf("_") + 1));
+            int[] dropPositions = tabuleiro.getMineFieldPosition(number);
 
+            dropPositions = getStartShipPositions(dragPositions, dropPositions);
             int[,] positions = getShipFields(int.Parse(values[0]), ref dropPositions[0], ref dropPositions[1]);
-            for(int cont = 0; cont < positions.GetLength(0); cont++) {
+
+            for (int cont = 0; cont < positions.GetLength(0); cont++) {
                 MineField mine = tabuleiro.getMineFields()[positions[cont, 0], positions[cont, 1]];
 
                 Button dropBtn = mine.btn;
-
                 dropBtn.FlatAppearance.BorderSize = 3;
-                dropBtn.FlatAppearance.BorderColor = Color.Blue;
+
+                if (allowDrop) { // drag leave to invalid field
+                    mine.btn.AllowDrop = true;
+                    dropBtn.FlatAppearance.BorderColor = Color.Blue;
+                } else {
+                    //mine.btn.AllowDrop = false;
+                    dropBtn.FlatAppearance.BorderColor = Color.Red;
+                }
             }
         }
 
-        public void dragLeaveMineField (object sender, EventArgs e) {
+        public void dragLeaveMineField(object sender, EventArgs e) {
             Button btn = (Button)sender;
             int number = int.Parse(btn.Name.Substring(btn.Name.IndexOf("_") + 1));
             int[] dropPositions = tabuleiro.getMineFieldPosition(number);
@@ -343,8 +374,10 @@ namespace BatalhaNaval_Forms {
                 else
                     dropBtn = tabuleiro.getMineFields()[dropPositions[0], c].btn;
 
+                dropBtn.AllowDrop = true;
+
                 dropBtn.FlatAppearance.BorderSize = 1;
-                dropBtn.FlatAppearance.BorderColor = Color.Black;                
+                dropBtn.FlatAppearance.BorderColor = Color.Black;
             }
         }
 
@@ -352,7 +385,7 @@ namespace BatalhaNaval_Forms {
             lbl_IP.Text = "Seu IP: ";
             mskTxt_HostIP.Visible = false;
             comboBox_LocalIPs.Visible = true;
-        }        
+        }
 
         public void Events_ClientConnected(object sender, ClientConnectedEventArgs e) {
             if (clientIP == null) {

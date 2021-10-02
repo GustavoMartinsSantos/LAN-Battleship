@@ -14,7 +14,6 @@ namespace BatalhaNaval_Forms {
         private bool Vertical = false;
         private bool Ship = false;
         private bool Jogada = false;
-        private bool Invalid = false;
         private string shipPart;
 
         public Button btn;
@@ -23,21 +22,23 @@ namespace BatalhaNaval_Forms {
             return Vertical;
         }
 
-        public bool IsShip() {
+        public bool isShip() {
             return Ship;
         }
 
         public void setShip(bool ship, string shipName, bool vertical) {
             Ship = ship;
+            shipPart = shipName;
+            Vertical = vertical;
 
-            if (ship) {
-                Vertical = vertical;
 
-                shipPart = shipName;
-            }
+            //if(shipName != null)
+            setImage(); // possíveis erros
+        }
 
-            if(shipName != null)
-                setImage();
+        public void setShip (string shipNumber) {
+            Ship = true;
+            shipPart = shipNumber;
         }
 
         public string getShip() {
@@ -67,16 +68,6 @@ namespace BatalhaNaval_Forms {
 
             if (Ship)
                 tabuleiro.addAcerto();
-
-            setImage();
-        }
-
-        public bool getInvalidPosition () {
-            return Invalid;
-        }
-
-        public void setInvalidPosition (bool position) {
-            Invalid = position;
 
             setImage();
         }
@@ -121,9 +112,7 @@ namespace BatalhaNaval_Forms {
         }
 
         public void setImage () {
-            if (Invalid)
-                btn.BackColor = Color.Gray;
-            else if (Ship && Jogada)
+            if (Ship && Jogada)
                 btn.Image = Image.FromFile("../../IMG/Explosao.png");
             else if (Jogada)
                 btn.Image = Image.FromFile("../../IMG/Splash.png");
