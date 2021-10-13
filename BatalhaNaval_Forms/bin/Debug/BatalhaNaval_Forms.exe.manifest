@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BatalhaNaval_Forms.exe" size="172520">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BatalhaNaval_Forms.exe" size="264680">
       <assemblyIdentity name="BatalhaNaval_Forms" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XYKCRoDxYZptUERnAVPj/80A3ocRg+5sBP7cfPUK3Os=</dsig:DigestValue>
+        <dsig:DigestValue>RMIQkr956iy8wqBqvs1Ey2rKqf73A9DKwJ1IGR8BdaI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
