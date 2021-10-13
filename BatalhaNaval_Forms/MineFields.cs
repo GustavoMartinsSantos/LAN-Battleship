@@ -113,11 +113,11 @@ namespace BatalhaNaval_Forms {
 
         public void setImage () {
             if (Ship && Jogada)
-                btn.Image = Image.FromFile("../../IMG/Explosao.png");
+                btn.Image = Properties.Resources.Explosao;
             else if (Jogada)
-                btn.Image = Image.FromFile("../../IMG/Splash.png");
+                btn.Image = Properties.Resources.Splash;
             else if (Ship) {
-                btn.Image = Image.FromFile("../../IMG/Ship" + shipPart + ".png");
+                btn.Image = (Image)Properties.Resources.ResourceManager.GetObject("Ship" + shipPart);
 
                 if (Vertical) {
                     btn.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);

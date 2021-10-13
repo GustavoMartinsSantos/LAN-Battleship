@@ -29,7 +29,7 @@ namespace BatalhaNaval_Forms {
             return gB_OponnentShips;
         }
 
-        public PartidaForm() {
+        public PartidaForm () {
             InitializeComponent();
         }
 
@@ -42,7 +42,7 @@ namespace BatalhaNaval_Forms {
 
             if (clientIP != null) { // first player is server side
                 yourTurn = true;
-                lbl_Turn.Text = "Sua vez.";
+                lbl_Turn.Text = "Sua vez";
             }
 
             try {
@@ -90,9 +90,7 @@ namespace BatalhaNaval_Forms {
                 int Position = int.Parse(btn.Name.Substring(btn.Name.IndexOf("n") + 1));
                 int[] cordenates = opponentBoard.getMineFieldPosition(Position);
                 MineField mine = opponentBoard.getMineFields()[cordenates[0], cordenates[1]];
-                //Quem estiver atirando deverá marcar o local na área “JOGO DO ADVERSÁRIO“. Se for 
-                //água marque com uma bolinha para não atirar no mesmo quadradinho mais de uma vez. 
-                //Se for fogo marque com X, se afundou pinte o quadrado e já coloque bolinhas ao redor, pois nenhum navio pode encostar no outro.
+
                 if (!mine.getJogada()) {
                     mine.setJogada(opponentBoard);
                     if (opponentBoard.getQtdAcertos() == qtdAcertos)
@@ -113,20 +111,16 @@ namespace BatalhaNaval_Forms {
         }
 
         private void youWin () {
-            MessageBox.Show("Parabéns, você venceu!!", "Jogo finalizado", MessageBoxButtons.OK);
-
             protocol.sendMessage(clientIP, "GAME OVER");
 
-            JogarNovamente();
+            JogarNovamente("Parabéns, você venceu!!");
         }
 
         private void youLose () {
-            MessageBox.Show("Você perdeu o jogo :(", "GAME OVER", MessageBoxButtons.OK);
-
-            JogarNovamente();
+            JogarNovamente("Você perdeu o jogo :(");
         }
 
-        private void JogarNovamente () {
+        private void JogarNovamente (string message) {
             if (clientIP != null) {
                 protocol.server.Events.ClientDisconnected -= Events_ClientDisconnected;
 
@@ -134,15 +128,18 @@ namespace BatalhaNaval_Forms {
             } else
                 protocol.client.Events.Disconnected -= Events_Disconnected;
 
+            MessageBox.Show(message, "Jogo finalizado", MessageBoxButtons.OK);
+
             if (MessageBox.Show("Deseja jogar novamente?", "Nova partida",
                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                t1 = new Thread(openNewMatch);
+                /*t1 = new Thread(openNewMatch);
                 t1.SetApartmentState(ApartmentState.STA);
                 t1.Start();
 
-                Close();
-            } else
+                Close();*/
                 ChangeForm();
+            } else
+                this.Close();//ChangeForm();
         }
 
         private void receivingData (string message) {
@@ -161,8 +158,6 @@ namespace BatalhaNaval_Forms {
 
                 firstMessage = false;
             } else {
-                lbl_Result.Text = message;
-
                 if (message == "GAME OVER")
                     youLose();
 
@@ -170,10 +165,14 @@ namespace BatalhaNaval_Forms {
                 int Y = int.Parse(values[0]);
                 int X = int.Parse(values[1]);
 
+                char[] letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };
+
+                lbl_Result.Text = "Seu adversário jogou na casa " + letters[X] + (Y + 1).ToString();
+
                 myBoard.getMineFields()[Y, X].setJogada(myBoard);
 
                 yourTurn = true;
-                lbl_Turn.Text = "Sua vez.";
+                lbl_Turn.Text = "Sua vez";
             }
         }
 
@@ -235,8 +234,8 @@ namespace BatalhaNaval_Forms {
                 }
             }
 
+
             Application.Run(new Insert_Ships(IP, protocol.getPort(), serverSide));
         }
-
     }
 }

@@ -118,43 +118,76 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Navio1_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\Navio1_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Explosao1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\Explosao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Navio1_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\Navio1_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Navio2_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\Navio2_4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Navio3_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\Navio3_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Navio2_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\Navio2_2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Navio3_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\Navio3_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Navio2_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\Navio2_1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Navio3_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\Navio3_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Navio2_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\Navio2_3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Fundo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Fundo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Explosao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMG\Explosao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Navio1_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\Navio1_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Ship1_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship1_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Fundo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMG\Fundo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Ship1_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship1_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship1_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship1_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship1_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship1_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship1_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship1_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship2_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship2_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship2_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship2_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship2_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship2_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship2_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship2_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship3_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship3_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship3_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship3_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship4_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship4_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship4_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship4_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship4_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship4_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship4_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship4_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship5_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship5_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship5_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship5_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship5_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship5_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Splash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Splash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship6_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship6_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship6_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship6_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ship6_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMG\Ship6_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

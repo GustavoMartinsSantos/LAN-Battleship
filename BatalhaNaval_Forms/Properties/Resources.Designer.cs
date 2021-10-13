@@ -73,16 +73,6 @@ namespace BatalhaNaval_Forms.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Explosao1 {
-            get {
-                object obj = ResourceManager.GetObject("Explosao1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Fundo {
             get {
                 object obj = ResourceManager.GetObject("Fundo", resourceCulture);
@@ -93,9 +83,9 @@ namespace BatalhaNaval_Forms.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Navio1_1 {
+        internal static System.Drawing.Bitmap Ship1_1 {
             get {
-                object obj = ResourceManager.GetObject("Navio1_1", resourceCulture);
+                object obj = ResourceManager.GetObject("Ship1_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +93,9 @@ namespace BatalhaNaval_Forms.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Navio1_2 {
+        internal static System.Drawing.Bitmap Ship1_2 {
             get {
-                object obj = ResourceManager.GetObject("Navio1_2", resourceCulture);
+                object obj = ResourceManager.GetObject("Ship1_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +103,9 @@ namespace BatalhaNaval_Forms.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Navio1_3 {
+        internal static System.Drawing.Bitmap Ship1_3 {
             get {
-                object obj = ResourceManager.GetObject("Navio1_3", resourceCulture);
+                object obj = ResourceManager.GetObject("Ship1_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +113,9 @@ namespace BatalhaNaval_Forms.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Navio2_1 {
+        internal static System.Drawing.Bitmap Ship1_4 {
             get {
-                object obj = ResourceManager.GetObject("Navio2_1", resourceCulture);
+                object obj = ResourceManager.GetObject("Ship1_4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +123,9 @@ namespace BatalhaNaval_Forms.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Navio2_2 {
+        internal static System.Drawing.Bitmap Ship1_5 {
             get {
-                object obj = ResourceManager.GetObject("Navio2_2", resourceCulture);
+                object obj = ResourceManager.GetObject("Ship1_5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +133,9 @@ namespace BatalhaNaval_Forms.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Navio2_3 {
+        internal static System.Drawing.Bitmap Ship2_1 {
             get {
-                object obj = ResourceManager.GetObject("Navio2_3", resourceCulture);
+                object obj = ResourceManager.GetObject("Ship2_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +143,9 @@ namespace BatalhaNaval_Forms.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Navio2_4 {
+        internal static System.Drawing.Bitmap Ship2_2 {
             get {
-                object obj = ResourceManager.GetObject("Navio2_4", resourceCulture);
+                object obj = ResourceManager.GetObject("Ship2_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +153,9 @@ namespace BatalhaNaval_Forms.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Navio3_1 {
+        internal static System.Drawing.Bitmap Ship2_3 {
             get {
-                object obj = ResourceManager.GetObject("Navio3_1", resourceCulture);
+                object obj = ResourceManager.GetObject("Ship2_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +163,9 @@ namespace BatalhaNaval_Forms.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Navio3_2 {
+        internal static System.Drawing.Bitmap Ship2_4 {
             get {
-                object obj = ResourceManager.GetObject("Navio3_2", resourceCulture);
+                object obj = ResourceManager.GetObject("Ship2_4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +173,129 @@ namespace BatalhaNaval_Forms.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Navio3_3 {
+        internal static System.Drawing.Bitmap Ship3_1 {
             get {
-                object obj = ResourceManager.GetObject("Navio3_3", resourceCulture);
+                object obj = ResourceManager.GetObject("Ship3_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ship3_2 {
+            get {
+                object obj = ResourceManager.GetObject("Ship3_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ship4_1 {
+            get {
+                object obj = ResourceManager.GetObject("Ship4_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ship4_2 {
+            get {
+                object obj = ResourceManager.GetObject("Ship4_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ship4_3 {
+            get {
+                object obj = ResourceManager.GetObject("Ship4_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ship4_4 {
+            get {
+                object obj = ResourceManager.GetObject("Ship4_4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ship5_1 {
+            get {
+                object obj = ResourceManager.GetObject("Ship5_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ship5_2 {
+            get {
+                object obj = ResourceManager.GetObject("Ship5_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ship5_3 {
+            get {
+                object obj = ResourceManager.GetObject("Ship5_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ship6_1 {
+            get {
+                object obj = ResourceManager.GetObject("Ship6_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ship6_2 {
+            get {
+                object obj = ResourceManager.GetObject("Ship6_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ship6_3 {
+            get {
+                object obj = ResourceManager.GetObject("Ship6_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Splash {
+            get {
+                object obj = ResourceManager.GetObject("Splash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

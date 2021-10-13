@@ -92,6 +92,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="TCPIP.cs" />
     <Compile Include="Tabuleiro.cs" />
     <EmbeddedResource Include="InsertShipsForm.resx">
@@ -102,14 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -140,37 +140,73 @@
     <None Include="IMG\Explosao.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="IMG\Navio1_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="IMG\Navio1_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="IMG\Navio2_4.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="IMG\Navio2_3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="IMG\Navio2_2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="IMG\Navio2_1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="IMG\Navio3_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="IMG\Navio3_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="IMG\Navio3_3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="IMG\Navio1_3.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="IMG\Fundo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship2_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship1_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship1_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship1_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship1_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship1_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship2_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship2_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship2_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship5_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship5_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship3_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship3_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship4_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship4_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship4_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship4_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship5_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship6_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship6_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IMG\Ship6_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

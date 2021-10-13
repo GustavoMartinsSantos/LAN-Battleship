@@ -11,8 +11,8 @@ namespace BatalhaNaval_Forms {
         private int rows = 10;
         private int columns = 10;
         private MineField[,] mineFields;
-        private int startPositionY = 38;
-        private int startPositionX = 38;
+        private int startPositionY = 28;
+        private int startPositionX = 28;
         private int addHeight = 51;
         private int addWidth = 51;
         private int qtdAcertos = 0;
