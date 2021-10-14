@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="BatalhaNaval_Forms.exe" version="1.0.0.15" publicKeyToken="21fcba6e66a6e052" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="BatalhaNaval_Forms" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="BatalhaNaval_Forms.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Opções de Manifesto do UAC
+          Para alterar o nível de Controle de Conta de Usuário do Windows, substitua o nó
+          requestedExecutionLevel por um dos seguintes.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Para utilizar a Virtualização de Arquivos e Registro para manter a compatibilidade com versões anteriores,
+         exclua o nó requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BatalhaNaval_Forms.exe" size="264680">
+      <assemblyIdentity name="BatalhaNaval_Forms" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>RMIQkr956iy8wqBqvs1Ey2rKqf73A9DKwJ1IGR8BdaI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SimpleTcp.dll" size="50688">
+      <assemblyIdentity name="SimpleTcp" version="2.4.1.1" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>h+i/L4unB7x3+FEgZp1gXdVFMgEu94o/HVMeAczd8wQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="BatalhaNaval_Forms.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=LATITUDE-E5440\Gustavo" issuerKeyHash="146f3ed6f8679b1d2e40a661380835f831c41a65" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>hEAW+eOkDpCsz70+QL9OQqpvDoL+VEAoPzglzUytpHs=</DigestValue></Reference></SignedInfo><SignatureValue>L46t1ypmV9PAB/ztLyh9J7jlH+eOTokA6vsfauPzuXq7Awz6G4wR9hA5bHVgdu72aaP1bF6UBycsVKT3q/8fx5w/lvd54nL5+n4vVa8VHLzEr+SVbmVZWXVYjSvOMmpcKlWgde0hRjKM5H/7Meyy5KAUv7axX8hi7w7wIBuUGXw=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>w/v1JZBWXQBDvMQasmmBqe39yQHf7NVQ+S9OWZegHoPT3Op6td/nUSJzs4FcCrjlV2H5D0GbLMuls9YRGNtwjCwAXbBX0Mf8Ja/6ZLqLuPkVWGO3Zv2FWgcDzf5U5fTR+GsDRN7lOO4NslNAPRHdYKwbl8MrIO6ZpTKkaw/YZEU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="7ba4ad4ccd25383f284054fe820e6faa424ebf403ebdcfac900ea4e3f9164084" Description="" Url=""><as:assemblyIdentity name="BatalhaNaval_Forms.exe" version="1.0.0.15" publicKeyToken="21fcba6e66a6e052" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=LATITUDE-E5440\Gustavo</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>L/iWxD1PJ13ogdrMVtoRLVkhAuIdc7tV5CP/KfJXhQ4=</DigestValue></Reference></SignedInfo><SignatureValue>K2D9JuQMzXpEsBDlkas/WNgx+MqfrmFoStZlCwpNZS2ZwDNxS1ZQVFQw3/acNlOo5r84e69ulwLsz0g4Fsqh3/E/sPZ73aDQBMnfKlad6lsBhZ6emjhZfTcBu3knvwJmzztF/pvdbUW+oYZkepmYliaCkPvbeAI/KQpU+paiEhk=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>w/v1JZBWXQBDvMQasmmBqe39yQHf7NVQ+S9OWZegHoPT3Op6td/nUSJzs4FcCrjlV2H5D0GbLMuls9YRGNtwjCwAXbBX0Mf8Ja/6ZLqLuPkVWGO3Zv2FWgcDzf5U5fTR+GsDRN7lOO4NslNAPRHdYKwbl8MrIO6ZpTKkaw/YZEU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB8TCCAVqgAwIBAgIQKrE/lye93K5NJOkh2C9thDANBgkqhkiG9w0BAQsFADA3MTUwMwYDVQQDHiwATABBAFQASQBUAFUARABFAC0ARQA1ADQANAAwAFwARwB1AHMAdABhAHYAbzAeFw0yMTA4MjQwMzU0MTZaFw0yMjA4MjQwOTU0MTZaMDcxNTAzBgNVBAMeLABMAEEAVABJAFQAVQBEAEUALQBFADUANAA0ADAAXABHAHUAcwB0AGEAdgBvMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDD+/UlkFZdAEO8xBqyaYGp7f3JAd/s1VD5L05Zl6Aeg9Pc6nq13+dRInOzgVwKuOVXYfkPQZssy6Wz1hEY23CMLABdsFfQx/wlr/pkuou4+RVYY7dm/YVaBwPN/lTl9NH4awNE3uU47g2yU0A9Ed1grBuXwysg7pmlMqRrD9hkRQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAIDLkUEVJw161CUL2FG5GYWFtRjSmWvYMqFxT0bunfl/JRJpAnsw7UqPn+LBP6zmaEHqwTQrtlxmcqSLo3qoMshTFoztmonm8tdIFLIpYfopQ7mFTSOYQ+B0uZZQbDlUzNY5AvLXRxNttDYvU+q4KphSvh43n94G4ebRzANXDhnd</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
