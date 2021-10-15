@@ -13,3 +13,9 @@ Then, the game begins:
 
 If all of the opponent's ships are "destroyed", the game stops and players receive the message below:
 ![Screenshot 2020-11-26 21 10 55](https://user-images.githubusercontent.com/62625567/100489504-42277380-30f3-11eb-95b9-89aec49565c0.png)
+
+## Form Version
+![Screenshot 2021-10-14 125034](https://user-images.githubusercontent.com/62625567/137352883-d22e6c50-ca7f-411e-9d9f-23a22d5cd612.png)
+
+![Screenshot 2021-10-11 18 47 19](https://user-images.githubusercontent.com/62625567/137357237-96e3b627-b74a-405a-a80c-68c1893537b8.png)
+Windows Forms Application developed on Visual Studio 2019, with .NET Framework 4.7.2
